@@ -8,17 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="write the code , see the world">
+<meta property="og:type" content="website">
 <meta property="og:title" content="GongLei'blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="GongLei'blog">
+<meta property="og:description" content="write the code , see the world">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GongLei'blog">
+<meta name="twitter:description" content="write the code , see the world">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.2d7529.css">
   <style type="text/css">
@@ -47,6 +50,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">GongLei</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">write the code , see the world</p>
 		
 
 		<nav class="header-menu">
@@ -102,6 +107,8 @@
 			  <h1 class="header-author js-header-author">GongLei</h1>
 			</hgroup>
 			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>write the code , see the world<i class="icon icon-quo-right"></i></p>
+			
 			
 			
 				
@@ -141,6 +148,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-webpack打包性能优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/27/webpack打包性能优化/">webpack打包性能优化</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/27/webpack打包性能优化/" class="archive-article-date">
+  	<time datetime="2017-02-27T04:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时间可达到几十秒，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都在首屏时加载，会拖慢我们应用的首屏时间，导致用户体验变差。显然这种方式是十分粗暴的，因此需要进行合理的优化，以下是我近两天采用的一些方法。<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/27/webpack打包性能优化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-个人网站开通啦" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -162,8 +235,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p> 这是一个使用GithubPages+Hexo搭建的个人网站！<br>
-        
-          <a class="article-more-a" href="/2017/02/26/个人网站开通啦/#more">more >></a>
         
       
 
@@ -291,7 +362,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">－ 生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
