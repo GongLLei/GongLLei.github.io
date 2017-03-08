@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | GongLei&#39;blog</title>
+  <title>块级格式化上下文(BFC) | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="write the code , see the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GongLei'blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="由于平时主要在写JavaScript，在最近找实习的过程中有意识的复习了一下css基础，发现自己在以往的学习和应用中太过于忽视css基础了，对于好多小技巧都处在知其然而不知所以然的阶段，比如知道给父级元素设置overflow:hidden或者overflow:auto;可以清除子元素的浮动(其实这种说法也不够准确，应该说可以包含浮动),但是却不知道为什么可以实现这个效果。在探究这个问题的过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="块级格式化上下文(BFC)">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/块级格式化上下文(BFC)/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="write the code , see the world">
+<meta property="og:description" content="由于平时主要在写JavaScript，在最近找实习的过程中有意识的复习了一下css基础，发现自己在以往的学习和应用中太过于忽视css基础了，对于好多小技巧都处在知其然而不知所以然的阶段，比如知道给父级元素设置overflow:hidden或者overflow:auto;可以清除子元素的浮动(其实这种说法也不够准确，应该说可以包含浮动),但是却不知道为什么可以实现这个效果。在探究这个问题的过程">
+<meta property="og:image" content="http://yoursite.com/img/pictures/bfc包含浮动.png">
+<meta property="og:image" content="http://yoursite.com/img/pictures/bfc阻止外边距叠加.png">
+<meta property="og:image" content="http://yoursite.com/img/pictures/文字环绕.png">
+<meta property="og:image" content="http://yoursite.com/img/pictures/bfc阻止文字环绕.png">
+<meta property="og:updated_time" content="2017-03-08T04:57:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GongLei'blog">
-<meta name="twitter:description" content="write the code , see the world">
+<meta name="twitter:title" content="块级格式化上下文(BFC)">
+<meta name="twitter:description" content="由于平时主要在写JavaScript，在最近找实习的过程中有意识的复习了一下css基础，发现自己在以往的学习和应用中太过于忽视css基础了，对于好多小技巧都处在知其然而不知所以然的阶段，比如知道给父级元素设置overflow:hidden或者overflow:auto;可以清除子元素的浮动(其实这种说法也不够准确，应该说可以包含浮动),但是却不知道为什么可以实现这个效果。在探究这个问题的过程">
+<meta name="twitter:image" content="http://yoursite.com/img/pictures/bfc包含浮动.png">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -142,36 +148,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-块级格式化上下文(BFC)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/07/块级格式化上下文(BFC)/" class="archive-article-date">
-  	<time datetime="2017-03-07T08:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/块级格式化上下文(BFC)/">块级格式化上下文(BFC)</a>
+    <h1 class="article-title" itemprop="name">
+      块级格式化上下文(BFC)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/07/块级格式化上下文(BFC)/" class="archive-article-date">
+  	<time datetime="2017-03-07T08:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>   由于平时主要在写JavaScript，在最近找实习的过程中有意识的复习了一下css基础，发现自己在以往的学习和应用中太过于忽视css基础了，对于好多小技巧都处在知其然而不知所以然的阶段，比如知道给父级元素设置overflow:hidden或者overflow:auto;可以清除子元素的浮动(其实这种说法也不够准确，应该说可以包含浮动),但是却不知道为什么可以实现这个效果。在探究这个问题的过程中学习到了CSS2.1当中一个很重要但自己却鲜有了解的概念，Block formatting contexts(块级格式化上下文)，以下简要记录一下对这个概念的学习与了解。<br>   <a id="more"></a><br>   W3C标准中这样介绍BFC：</p>
+<blockquote>
+<p> 浮动元素和绝对定位元素，非块级盒子的块级容器（例如 inline-blocks, table-cells, 和 table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们的内容创建新的BFC（块级格式上下文）。在BFC中，盒子从顶端开始垂直地一个接一个地排列，两个盒子之间的垂直的间隙是由他们的margin 值所决定的。在一个BFC中，两个相邻的块级盒子的垂直外边距会产生折叠。在BFC中，每一个盒子的左外边缘（margin-left）会触碰到容器的左边缘(border-left)（对于从右到左的格式来说，则触碰到右边缘）。</p>
+</blockquote>
+<p>   由此我们了解了触发BFC可以有以下几种方式:</p>
+<ul>
+<li>float设置left或right</li>
+<li>overflow设置为visible以外的值(auto,hidden,scroll)</li>
+<li>display属性设置为inline-block，table-cells或者table-captions</li>
+<li><p>position设置为绝对定位(absolute，fixed)</p>
+<p>知道了触发BFC的几种方式，那么它的应用场景有哪些呢？</p>
+<p>1.使用BFC包含浮动</p>
+<p>创建了BFC的元素相当于创建了一个独立的盒子，里面的元素在布局上不会影响外面的元素，反之亦然，同时BFC仍然属于文档中的普通流。因此我们刚刚提到的设置父元素overflow ＝ hidden ｜｜ auto的方式实际上是创建了一个BFC，而按照BFC的本意来说，必须给里面浮动的元素撑起来高度才能达到“在布局上不影响外面元素”的效果，否则由于高度“坍塌“会使后面的元素较原位置向上，因此创建BFC可以有清除浮动的效果，但是此处叫做包含浮动比较好。例子如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span></div><div class="line">		inner1</div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span></div><div class="line">		inner2</div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">	footer</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> <span class="selector-class">.outer</span>&#123;</div><div class="line">   <span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">   <span class="attribute">overflow</span>: auto;<span class="comment">/*设置为hidden也可以实现效果*/</span></div><div class="line">   </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.inner</span>&#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid green;</div><div class="line">	<span class="attribute">float</span>: left;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.footer</span>&#123;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid black;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如图：</p>
+<p><img src="/img/pictures/bfc包含浮动.png" alt=""><br>这样就达到了预期的效果。当然最常用的清除浮动的方法依然是添加伪元素并设置其clear，这里就不展开介绍了。</p>
+<p>2.使用BFC阻止外边距叠加</p>
+<p>   当两个相邻的元素在同一个BFC中时，它们之间在垂直方向的外边距会叠加（水平方向上不会），也就是说会取max｛fist.margin-bottom,second.margin-top｝来作为fist与second元素之间的间距。那么，如果两个元素不属于同一个块级格式化上下文，那么它们的外边距就不会叠加。因此可以使用构造BFC的方法来阻止元素外边距的叠加。例子如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line">	div1</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span>  <span class="comment">&lt;!--创建外层div，构造BFC--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div2"</span>&gt;</span></div><div class="line">		div2</div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span>&#123;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid red;</div><div class="line">	<span class="attribute">margin-bottom</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.div2</span>&#123;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid green;</div><div class="line">	<span class="attribute">margin-top</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">	<span class="attribute">overflow</span>: auto; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如图：<br><img src="/img/pictures/bfc阻止外边距叠加.png" alt=""><br>在div2的外层添加了一层div，并且设置其overflow属性为auto，这就创建了一个BFC，div1与div2处于两个BFC中，因此不会产生外边距叠加。可以看到，div1与div2之间的外边距已经是100px。</p>
+<p>3.使用BFC避免文字环绕<br>首先明确一下要解决的问题，在很多场景下都会用到一种 左侧图片＋右边信息的两栏结构，如果不做处理就会产生文字环绕的问题，如图：<br>            <img src="/img/pictures/文字环绕.png" alt=""><br>为什么会产生这种问题呢？在《精通CSS：高级Web标准解决方案（第2版）》中有这样一段话很好的解释了原因： </p>
+<blockquote>
+<p>浮动会让元素脱离文档流，不再影响不浮动的元素。实际上，并不完全如此。如果浮动的元素后边得有一个文档流中的元素，那么这个元素的框就会表现得像浮动根本不存在一样。但是，框的文本内容会受到浮动元素的影响，会移动以留出空间。用技术术语来说，浮动元素旁边的行框被缩短，从而给浮动元素留出空间，因此行框围绕浮动框。</p>
+</blockquote>
+<p>也就是说虽然p元素位置没有受到影响，但是其内部文本内容会为浮动的元素流出位置，因此在上半部分会向右移动，当浮动元素结束时又恢复了正常。可以使用BFC来解决这个问题，首先还是回顾一下W3C规范：</p>
+<blockquote>
+<p>在BFC上下文中，每个盒子的左外侧紧贴包含块的左侧（从右到左的格式里，则为盒子右外侧紧贴包含块右侧），甚至有浮动也是如此（尽管盒子里的行盒子 Line Box 可能由于浮动而变窄），除非盒子创建了一个新的BFC（在这种情况下盒子本身可能由于浮动而变窄）。</p>
+</blockquote>
+<p>因此我们可以为右侧的P元素创建一个新的BFC那么它就不会在紧贴着包含块的左侧了，这样其内部的文本自然也就不会产生环绕。例子如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>左浮动<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是句子的内容这是句子的内容这是句子的内容这是句子的内容这是句子的内容这是句子的内容这是句子的内容这是句子的内容这是句子的内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.outer</span>&#123;</div><div class="line">	<span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">	<span class="attribute">border</span>:<span class="number">1px</span> solid red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.outer</span> <span class="selector-tag">div</span>&#123;</div><div class="line">	<span class="attribute">float</span>: left;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">background</span>: gray;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.outer</span> <span class="selector-tag">p</span>&#123;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">overflow</span>: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如图：<br>     <img src="/img/pictures/bfc阻止文字环绕.png" alt=""></p>
+<p>以上便是对于块级格式化上下文应用场景的一些简要介绍，了解并合理的利用BFC对于每位CSSer还是十分必要的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -183,99 +223,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/07/块级格式化上下文(BFC)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/27/webpack打包性能优化/" class="archive-article-date">
-  	<time datetime="2017-02-27T04:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/27/webpack打包性能优化/">webpack打包性能优化</a>
-    </h1>
+  
+    <a href="/2017/02/27/webpack打包性能优化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webpack打包性能优化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/26/个人网站开通啦/" class="archive-article-date">
-  	<time datetime="2017-02-26T11:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/26/个人网站开通啦/">个人网站开通啦</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -295,8 +324,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
