@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>webpack打包性能优化 | GongLei&#39;blog</title>
+  <title>近期的面试总结 | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时">
+  <meta name="description" content="开个坑。总结一下最近面试的经验与感想。                                             －－－待填">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack打包性能优化">
-<meta property="og:url" content="http://yoursite.com/2017/02/27/webpack打包性能优化/index.html">
+<meta property="og:title" content="近期的面试总结">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/近期的面试总结/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时">
-<meta property="og:updated_time" content="2017-02-27T06:41:36.000Z">
+<meta property="og:description" content="开个坑。总结一下最近面试的经验与感想。                                             －－－待填">
+<meta property="og:updated_time" content="2017-03-15T03:51:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack打包性能优化">
-<meta name="twitter:description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时">
+<meta name="twitter:title" content="近期的面试总结">
+<meta name="twitter:description" content="开个坑。总结一下最近面试的经验与感想。                                             －－－待填">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -139,36 +139,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-webpack打包性能优化" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-近期的面试总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      webpack打包性能优化
+      近期的面试总结
     </h1>
   
 
         
-        <a href="/2017/02/27/webpack打包性能优化/" class="archive-article-date">
-  	<time datetime="2017-02-27T04:50:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+        <a href="/2017/03/15/近期的面试总结/" class="archive-article-date">
+  	<time datetime="2017-03-15T03:49:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时间可达到几十秒，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都在首屏时加载，会拖慢我们应用的首屏时间，导致用户体验变差。显然这种方式是十分粗暴的，因此需要进行合理的优化，以下是我近两天采用的一些方法。<br> <a id="more"></a></p>
-<h3 id="1-抽离公共代码块"><a href="#1-抽离公共代码块" class="headerlink" title="1.抽离公共代码块"></a>1.抽离公共代码块</h3><p> 对于常用的类库或者common代码块来说，基本上我们不会修改到，因此我们可以把这一部分代码抽离出来，单独打包成一个文件，在入口的html文件当中单独引入。webpack中提供了内置的插件帮我们实现这个功能，例如我们想要将jquery单独打包，可以采用下面这种做法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">entry:&#123;</div><div class="line">      <span class="attr">path</span>:__dirname+<span class="string">"/src/entry.js"</span>,</div><div class="line">      <span class="attr">vendor</span>:[<span class="string">"jquery"</span>]</div><div class="line">  	&#125;</div><div class="line">   plugins:[</div><div class="line">  	<span class="keyword">new</span>  webpack.optimize.CommonsChunkPlugin(&#123;<span class="attr">name</span>:<span class="string">"vendor"</span>,<span class="attr">filename</span>:<span class="string">"vendor.js"</span>&#125;) </div><div class="line">  ]</div></pre></td></tr></table></figure></p>
-<p> 以上就将jquery单独打包为vendor.js，随后在入口的html文件中引入即可，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt; script type=<span class="string">"text/javascript"</span> src=<span class="string">"vendor.js?24f0580a0c65db9f9ddd"</span>&gt;&lt;/script&gt;</div><div class="line">&lt; script type=<span class="string">"text/javascript"</span> src=<span class="string">"bundle.js?24f0580a0c65db9f9ddd"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>通过以上方式可以有效的提升开发时的体验，抽离出的公共部分不参与打包（热更新的情况下），减少了开发时编译的等待时间。</p>
-<h3 id="2-按需加载"><a href="#2-按需加载" class="headerlink" title="2.按需加载"></a>2.按需加载</h3><p> 对于单页应用，在首屏时加载所有的静态资源是非常低效的，因为并不是所有的模块都会立刻使用到，对于这一类的模块，我们可以在需要的时候加载。如果使用commonjs规范的话，可以使用如下的做法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> 	<span class="built_in">require</span>.ensure([<span class="string">"hellojs"</span>],<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> hello = <span class="built_in">require</span>(<span class="string">"hellojs"</span>);</div><div class="line">    <span class="comment">// and so on </span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p> 这样做在编译过程中会多生成一个文件 x.bundle.js，这个文件就是hello.js对应生成的包，只有当我们需要使用到它时，才会加载，这样就减少了bundle.js的大小，也就是说优化了首屏显示的速度。</p>
-<h3 id="3-代码压缩"><a href="#3-代码压缩" class="headerlink" title="3.代码压缩"></a>3.代码压缩</h3><p>这是一种非常常见的做法，因此不做赘述。在webpack中有内置插件可以使用，推荐在上线时才开启。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(&#123;  <span class="comment">//代码压缩</span></div><div class="line">          compress:&#123;</div><div class="line">              <span class="attr">warnings</span>:<span class="literal">false</span>,</div><div class="line">          &#125;,</div><div class="line">          <span class="attr">output</span>:&#123;</div><div class="line">              <span class="attr">comments</span>:<span class="literal">false</span>,</div><div class="line">          &#125;,</div><div class="line">      &#125;)</div></pre></td></tr></table></figure></p>
-<hr>
-<p> 以上便是最近两天所使用的一些方法，当然还有很多可以优化的地方，我也在不断的学习，使用。</p>
-<p> 参考：<a href="https://webpack.github.io/docs/code-splitting.html#commons-chunk" target="_blank" rel="external">https://webpack.github.io/docs/code-splitting.html#commons-chunk</a></p>
+        <p> 开个坑。总结一下最近面试的经验与感想。<br>                                             －－－待填</p>
 
       
 
@@ -182,11 +173,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
@@ -242,7 +233,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/27/webpack打包性能优化/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/15/近期的面试总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -256,18 +247,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/07/块级格式化上下文(BFC)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          块级格式化上下文(BFC)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/26/个人网站开通啦/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">个人网站开通啦</div>
+    <a href="/2017/03/07/块级格式化上下文(BFC)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">块级格式化上下文(BFC)</div>
       <i class="icon-circle-right"></i>
     </a>
   
