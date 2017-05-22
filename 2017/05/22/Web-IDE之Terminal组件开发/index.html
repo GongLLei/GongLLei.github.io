@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>个人网站开通啦 | GongLei&#39;blog</title>
+  <title>Web IDE之Terminal组件开发 | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是一个使用GithubPages+Hexo搭建的个人博客,主题是使用的yilia,在这里先感谢作者的无私分享。">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;随着web技术的发展，越来越多的客户端的程序正逐渐搬到了浏览器上面。比如web端的IDE，web端的一些团队管理工具如teambition等。然后挺久之前在知乎上看到过coding的架构师写的一篇关于Web IDE实现的答案，很感兴趣，一直想有所尝试。正巧组上最近在开发一款公司内部使用的WebIDE项目，主要负责其中的terminal组件开发。我和">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人网站开通啦">
-<meta property="og:url" content="http://yoursite.com/2017/02/26/个人网站开通啦/index.html">
+<meta property="og:title" content="Web IDE之Terminal组件开发">
+<meta property="og:url" content="http://yoursite.com/2017/05/22/Web-IDE之Terminal组件开发/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="这是一个使用GithubPages+Hexo搭建的个人博客,主题是使用的yilia,在这里先感谢作者的无私分享。">
-<meta property="og:updated_time" content="2017-05-12T08:43:06.000Z">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;随着web技术的发展，越来越多的客户端的程序正逐渐搬到了浏览器上面。比如web端的IDE，web端的一些团队管理工具如teambition等。然后挺久之前在知乎上看到过coding的架构师写的一篇关于Web IDE实现的答案，很感兴趣，一直想有所尝试。正巧组上最近在开发一款公司内部使用的WebIDE项目，主要负责其中的terminal组件开发。我和">
+<meta property="og:image" content="http://yoursite.com/img/terminal.jpg">
+<meta property="og:updated_time" content="2017-05-22T08:11:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人网站开通啦">
-<meta name="twitter:description" content="这是一个使用GithubPages+Hexo搭建的个人博客,主题是使用的yilia,在这里先感谢作者的无私分享。">
+<meta name="twitter:title" content="Web IDE之Terminal组件开发">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;随着web技术的发展，越来越多的客户端的程序正逐渐搬到了浏览器上面。比如web端的IDE，web端的一些团队管理工具如teambition等。然后挺久之前在知乎上看到过coding的架构师写的一篇关于Web IDE实现的答案，很感兴趣，一直想有所尝试。正巧组上最近在开发一款公司内部使用的WebIDE项目，主要负责其中的terminal组件开发。我和">
+<meta name="twitter:image" content="http://yoursite.com/img/terminal.jpg">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -139,27 +141,31 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-个人网站开通啦" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Web-IDE之Terminal组件开发" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      个人网站开通啦
+      Web IDE之Terminal组件开发
     </h1>
   
 
         
-        <a href="/2017/02/26/个人网站开通啦/" class="archive-article-date">
-  	<time datetime="2017-02-26T11:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-26</time>
+        <a href="/2017/05/22/Web-IDE之Terminal组件开发/" class="archive-article-date">
+  	<time datetime="2017-05-22T07:41:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 这是一个使用GithubPages+Hexo搭建的个人博客,主题是使用的<a href="https://github.com/litten/hexo-theme-yilia" target="_blank">yilia</a>,在这里先感谢作者的无私分享。<br><a id="more"></a><br>今后会在这个网站上更新一下自己学习的经验以及生活上的一些感悟。</p>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;随着web技术的发展，越来越多的客户端的程序正逐渐搬到了浏览器上面。比如web端的IDE，web端的一些团队管理工具如teambition等。然后挺久之前在知乎上看到过coding的架构师写的一篇关于Web IDE实现的答案，很感兴趣，一直想有所尝试。正巧组上最近在开发一款公司内部使用的WebIDE项目，主要负责其中的terminal组件开发。我和大多数的开发者是一样的，每天都在高频率的使用terminal，但是对于其实现的原理却不了解。经过上周的一些搜索和实践，最终搞清了它的原理，并写了一个demo出来。现在记录一下上周的一些学习和实践的历程。<br> <a id="more"></a></p>
+<h3 id="1-Terminal原理"><a href="#1-Terminal原理" class="headerlink" title="1.Terminal原理"></a>1.Terminal原理</h3><p> &nbsp;&nbsp;&nbsp;&nbsp;首先应该了解的是Terminal，bash和shell之间的区别。我们通常所说的Terminal是指的终端模拟器，比如mac上自带的terminal.app和更常用的item2等，它们都是直面用户的gui程序。然后shell是命令行解释器，它的职责是执行终端设备传递过来的字符串和控制字符，执行相应的命令，通俗点讲，就是接受用户命令，调用相关应用程序。而bash是shell中的一种，其它还有功能更强大的如zsh等等。</p>
+<p>  &nbsp;&nbsp;&nbsp;&nbsp;一般情况下终端模拟器是不会直接与shell通讯的，而是通过pty（Pseudoterminal，伪终端）来实现。pty 是一对 master-slave 设备，master 设备表现得像一个文件，slave 设备表现得像一个终端设备。终端模拟器通过文件读写流与 pyt master通讯，pty master再将字符输入经过线路规程的转换传送给nty slave，slave进一步传递给bash。整个过程大概如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">终端模拟器(item2,terminal.app等)  ——&gt; nty master  ——&gt;  nty slave ——&gt; shell(bash,zsh等)</div></pre></td></tr></table></figure></p>
+<p>这样shell就能接收到用户的输入并执行相应的命令了。</p>
+<h3 id="2-Web-Terminal的实现原理"><a href="#2-Web-Terminal的实现原理" class="headerlink" title="2.Web Terminal的实现原理"></a>2.Web Terminal的实现原理</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;理解了terminal的原理之后，对于在web端的实现仍然没有什么头绪，直到看到coding 总结的一副原理图才又了一些想法，在这里引用一下：<br><img src="/img/terminal.jpg" alt="Alt text"></p>
 
       
 
@@ -173,7 +179,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Web IDE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebSocket</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Terminal</a>
         		</li>
       		
 		</ul>
@@ -229,7 +247,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/26/个人网站开通啦/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/22/Web-IDE之Terminal组件开发/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -243,15 +261,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/27/webpack打包性能优化/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          webpack打包性能优化
-        
-      </div>
-    </a>
   
+    <a href="/2017/05/12/正则入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">正则入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
