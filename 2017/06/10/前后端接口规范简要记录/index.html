@@ -8,25 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>前后端接口规范简要记录 | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="说明
-1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。
-2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值
-3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：12345678910&amp;#123;	data:&amp;#123;">
+  <meta name="description" content="前后端分离的开发模式当中，关于接口方面的开发调试会占据相当大的比例，因此接口规则的约定以及接口文档的规范性还是十分重要的，以前的在实验室的项目中在这方面做得就不太好。最近实验室要开一个新的项目，在项目开始前也思考了一下这个问题并就自己目前的了解定义了一些简单的规则，在这边也做一下纪录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端接口规范简要记录">
 <meta property="og:url" content="http://yoursite.com/2017/06/10/前后端接口规范简要记录/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="说明
-1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。
-2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值
-3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：12345678910&amp;#123;	data:&amp;#123;">
-<meta property="og:updated_time" content="2017-06-10T14:30:30.000Z">
+<meta property="og:description" content="前后端分离的开发模式当中，关于接口方面的开发调试会占据相当大的比例，因此接口规则的约定以及接口文档的规范性还是十分重要的，以前的在实验室的项目中在这方面做得就不太好。最近实验室要开一个新的项目，在项目开始前也思考了一下这个问题并就自己目前的了解定义了一些简单的规则，在这边也做一下纪录。">
+<meta property="og:updated_time" content="2017-06-10T14:38:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前后端接口规范简要记录">
-<meta name="twitter:description" content="说明
-1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。
-2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值
-3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：12345678910&amp;#123;	data:&amp;#123;">
+<meta name="twitter:description" content="前后端分离的开发模式当中，关于接口方面的开发调试会占据相当大的比例，因此接口规则的约定以及接口文档的规范性还是十分重要的，以前的在实验室的项目中在这方面做得就不太好。最近实验室要开一个新的项目，在项目开始前也思考了一下这个问题并就自己目前的了解定义了一些简单的规则，在这边也做一下纪录。">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -168,8 +159,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+        <p>前后端分离的开发模式当中，关于接口方面的开发调试会占据相当大的比例，因此接口规则的约定以及接口文档的规范性还是十分重要的，以前的在实验室的项目中在这方面做得就不太好。最近实验室要开一个新的项目，在项目开始前也思考了一下这个问题并就自己目前的了解定义了一些简单的规则，在这边也做一下纪录。<br><a id="more"></a></p>
+<h2 id="接口说明"><a href="#接口说明" class="headerlink" title="接口说明"></a>接口说明</h2><ul>
 <li>1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。</li>
 <li>2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值</li>
 <li>3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">data</span>:&#123;</div><div class="line">	              <span class="comment">//项目中实际的返回数据用data包裹</span></div><div class="line">	</div><div class="line">	      &#125;</div><div class="line">	status:｛</div><div class="line">                  code:<span class="number">0</span>,</div><div class="line">                  <span class="attr">msg</span>:<span class="string">'登陆成功'</span></div><div class="line">             &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -228,7 +219,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">－ 编程规范</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编程规范</a>
         		</li>
       		
 		</ul>
@@ -426,6 +417,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">－ 编程规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程规范</a>
               </li>
             
             <div class="clearfix"></div>

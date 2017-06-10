@@ -160,54 +160,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
-<li>1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。</li>
-<li>2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值</li>
-<li>3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">data</span>:&#123;</div><div class="line">	              <span class="comment">//项目中实际的返回数据用data包裹</span></div><div class="line">	</div><div class="line">	      &#125;</div><div class="line">	status:｛</div><div class="line">                  code:<span class="number">0</span>,</div><div class="line">                  <span class="attr">msg</span>:<span class="string">'登陆成功'</span></div><div class="line">             &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>其中，data与status同级别，项目中实际返回的数据用data包裹，如果不需要返回数据则只返回status，说明此次请求的结果是怎么样的。status由code和msg组成，code为自定义的返回码，一般默认0为相关请求成功，其余的码由前后端根据业务商定；msg为对于状态码的相关说明，如操作失败，操作成功，查询成功等等等。</p>
-<ul>
-<li>4.对于每一个请求，前端在拿到请求数据之后首先判断status再做后续业务相关的操作。</li>
-<li>5.每一个借口均需要生成借口文档</li>
-</ul>
-<p>下面我们举一个接口文档的例子</p>
-<h3 id="登陆模块请求"><a href="#登陆模块请求" class="headerlink" title="登陆模块请求"></a>登陆模块请求</h3><ul>
-<li>请求说明：用户登录</li>
-<li>method:‘POST’</li>
-<li>Content-Type：application/x-www-form-urlencoded</li>
-<li>url:/user/login</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th style="text-align:center">说明</th>
-<th style="text-align:center">是否必须</th>
-<th style="text-align:center">默认值</th>
-<th style="text-align:center">类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>userName</td>
-<td style="text-align:center">用户名</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">无</td>
-<td style="text-align:center">string</td>
-</tr>
-<tr>
-<td>password</td>
-<td style="text-align:center">密码</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">无</td>
-<td style="text-align:center">string</td>
-</tr>
-</tbody>
-</table>
-<h4 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   userName:&apos;gonglei&apos;,</div><div class="line">   password:&apos;123456&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="响应示例"><a href="#响应示例" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">//因为不需要data项故只返回status即可。</div><div class="line">	status:｛</div><div class="line">        code:0,</div><div class="line">        msg:&apos;登陆成功&apos;</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p>前后端分离的开发模式当中，关于接口方面的开发调试会占据相当大的比例，因此接口规则的约定以及接口文档的规范性还是十分重要的，以前的在实验室的项目中在这方面做得就不太好。最近实验室要开一个新的项目，在项目开始前也思考了一下这个问题并就自己目前的了解定义了一些简单的规则，在这边也做一下纪录。<br>
+        
       
 
       
@@ -220,7 +174,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">－ 编程规范</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编程规范</a>
         		</li>
       		
 		</ul>
@@ -631,6 +585,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">－ 编程规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程规范</a>
               </li>
             
             <div class="clearfix"></div>
