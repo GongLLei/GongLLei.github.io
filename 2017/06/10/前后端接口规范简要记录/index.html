@@ -6,17 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Web IDE | GongLei&#39;blog</title>
+  <title>前后端接口规范简要记录 | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="write the code , see the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GongLei'blog">
-<meta property="og:url" content="http://yoursite.com/tags/Web-IDE/index.html">
+  <meta name="description" content="说明
+1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。
+2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值
+3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：12345678910&amp;#123;	data:&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端接口规范简要记录">
+<meta property="og:url" content="http://yoursite.com/2017/06/10/前后端接口规范简要记录/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="write the code , see the world">
+<meta property="og:description" content="说明
+1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。
+2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值
+3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：12345678910&amp;#123;	data:&amp;#123;">
+<meta property="og:updated_time" content="2017-06-10T14:28:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GongLei'blog">
-<meta name="twitter:description" content="write the code , see the world">
+<meta name="twitter:title" content="前后端接口规范简要记录">
+<meta name="twitter:description" content="说明
+1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。
+2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值
+3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：12345678910&amp;#123;	data:&amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -138,72 +148,173 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-前后端接口规范简要记录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/22/Web-IDE之Terminal组件开发/" class="archive-article-date">
-  	<time datetime="2017-05-22T07:41:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/22/Web-IDE之Terminal组件开发/">Web IDE之Terminal组件开发</a>
+    <h1 class="article-title" itemprop="name">
+      前后端接口规范简要记录
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/10/前后端接口规范简要记录/" class="archive-article-date">
+  	<time datetime="2017-06-10T14:25:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
+<li>1.前后端接口命名方式为驼峰式，例如userName，getFormData等等。</li>
+<li>2.默认情况下前端请求数据的content－type设置为Content-Type：application/x-www-form-urlencoded，方便后端直接拿到请求值</li>
+<li>3.后端返回数据必须包含status项，以方便前端判断。具体采用如下格式：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">data</span>:&#123;</div><div class="line">	              <span class="comment">//项目中实际的返回数据用data包裹</span></div><div class="line">	</div><div class="line">	      &#125;</div><div class="line">	status:｛</div><div class="line">                  code:<span class="number">0</span>,</div><div class="line">                  <span class="attr">msg</span>:<span class="string">'登陆成功'</span></div><div class="line">             &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>其中，data与status同级别，项目中实际返回的数据用data包裹，如果不需要返回数据则只返回status，说明此次请求的结果是怎么样的。status由code和msg组成，code为自定义的返回码，一般默认0为相关请求成功，其余的码由前后端根据业务商定；msg为对于状态码的相关说明，如操作失败，操作成功，查询成功等等等。</p>
+<ul>
+<li>4.对于每一个请求，前端在拿到请求数据之后首先判断status再做后续业务相关的操作。</li>
+<li>5.每一个借口均需要生成借口文档</li>
+</ul>
+<p>下面我们举一个接口文档的例子</p>
+<h3 id="登陆模块请求"><a href="#登陆模块请求" class="headerlink" title="登陆模块请求"></a>登陆模块请求</h3><ul>
+<li>请求说明：用户登录</li>
+<li>method:‘POST’</li>
+<li>Content-Type：application/x-www-form-urlencoded</li>
+<li>url:/user/login</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">是否必须</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userName</td>
+<td style="text-align:center">用户名</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">string</td>
+</tr>
+<tr>
+<td>password</td>
+<td style="text-align:center">密码</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">string</td>
+</tr>
+</tbody>
+</table>
+<h4 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   userName:&apos;gonglei&apos;,</div><div class="line">   password:&apos;123456&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="响应示例"><a href="#响应示例" class="headerlink" title="响应示例"></a>响应示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&#123;</div><div class="line">//因为不需要data项故只返回status即可。</div><div class="line">	status:｛</div><div class="line">        code:0,</div><div class="line">        msg:&apos;登陆成功&apos;</div><div class="line">       &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Web IDE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Terminal</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">WebSocket</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">－ 编程规范 － 接口调试</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/10/前后端接口规范简要记录/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/05/22/Web-IDE之Terminal组件开发/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Web IDE之Terminal组件开发</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -223,9 +334,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
