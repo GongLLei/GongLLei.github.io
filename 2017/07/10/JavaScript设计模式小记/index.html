@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>正则入门 | GongLei&#39;blog</title>
+  <title>JavaScript设计模式小记 | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;正则表达式在前端开发当中还是很常用的，它可以帮助我们完成一些复杂字符串的匹配，搜索和替换工作，比如说 验证邮箱格式，验证手机号码以及其他一些更高级的应用。当然作为一个前端渣，只是用正则来解决一些业务上的问题，并没有过更高级的应用 －－！写这篇文章的主要目的也只是记录一下正则的常用语法，这样以后有遗忘的时候就不用到处找地方查了 －－！">
+  <meta name="description" content="write the code , see the world">
 <meta property="og:type" content="article">
-<meta property="og:title" content="正则入门">
-<meta property="og:url" content="http://yoursite.com/2017/05/12/正则入门/index.html">
+<meta property="og:title" content="JavaScript设计模式小记">
+<meta property="og:url" content="http://yoursite.com/2017/07/10/JavaScript设计模式小记/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;正则表达式在前端开发当中还是很常用的，它可以帮助我们完成一些复杂字符串的匹配，搜索和替换工作，比如说 验证邮箱格式，验证手机号码以及其他一些更高级的应用。当然作为一个前端渣，只是用正则来解决一些业务上的问题，并没有过更高级的应用 －－！写这篇文章的主要目的也只是记录一下正则的常用语法，这样以后有遗忘的时候就不用到处找地方查了 －－！">
-<meta property="og:updated_time" content="2017-05-13T11:59:20.000Z">
+<meta property="og:description" content="write the code , see the world">
+<meta property="og:updated_time" content="2017-07-10T07:42:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="正则入门">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;正则表达式在前端开发当中还是很常用的，它可以帮助我们完成一些复杂字符串的匹配，搜索和替换工作，比如说 验证邮箱格式，验证手机号码以及其他一些更高级的应用。当然作为一个前端渣，只是用正则来解决一些业务上的问题，并没有过更高级的应用 －－！写这篇文章的主要目的也只是记录一下正则的常用语法，这样以后有遗忘的时候就不用到处找地方查了 －－！">
+<meta name="twitter:title" content="JavaScript设计模式小记">
+<meta name="twitter:description" content="write the code , see the world">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -139,55 +139,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-正则入门" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript设计模式小记" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      正则入门
+      JavaScript设计模式小记
     </h1>
   
 
         
-        <a href="/2017/05/12/正则入门/" class="archive-article-date">
-  	<time datetime="2017-05-12T08:32:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-12</time>
+        <a href="/2017/07/10/JavaScript设计模式小记/" class="archive-article-date">
+  	<time datetime="2017-07-10T07:42:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;正则表达式在前端开发当中还是很常用的，它可以帮助我们完成一些复杂字符串的匹配，搜索和替换工作，比如说 验证邮箱格式，验证手机号码以及其他一些更高级的应用。当然作为一个前端渣，只是用正则来解决一些业务上的问题，并没有过更高级的应用 －－！写这篇文章的主要目的也只是记录一下正则的常用语法，这样以后有遗忘的时候就不用到处找地方查了 －－！<br>    <a id="more"></a><br>以下是一些常用的元字符和搭配：</p>
-<ul>
-<li>^: 匹配字符串的开始   </li>
-<li>$: 匹配字符串的结束  </li>
-<li>.: 匹配除了换行符之外的任何字符   </li>
-<li>\w: 匹配字母或者数组或者下划线或者汉字。\W(w字母大写)表示其反义，即匹配任意不是字母，数字，下划线，汉字的字符</li>
-<li>\b: 匹配单词的开头和结尾，即单词的分界处。\B表示其反义</li>
-<li>\d: 匹配一个数字,\d{2}匹配两个数字，\d{2,5}匹配2个到5个数字。\D表示其反义</li>
-<li>\s: 匹配任意的空白符，包括空格，制表符，换行符等。\S表示其反义</li>
-<li>*: 代表数量，指定＊前面的内容可以连续重复的使用任意次数(零次或者更多次)来使表达式匹配，和.连用即 .＊的时候,表示任意数量的不包含换行的字符  </li>
-<li>+:代表数量，表示重复一次或者更多次</li>
-<li>？：代表数量，表示重复零次或者一次</li>
-<li>{n}:代表数量，表示重复n次</li>
-<li>{n,}：代表数量，表示重复n次或者更多次</li>
-<li>{n,m}:代表数量，表示重复n到m次</li>
-<li>[]:指定范围，匹配中括号范围内的字符，如[0-9a-zA-Z]匹配0～9，a～z，A～Z的字符</li>
-<li>[^x]    :匹配除了x以外的任意字符</li>
-<li>|:表示分支条件，可以理解为或</li>
-</ul>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;当然如果要匹配元字符本身的话，需要使用 \ 来取消元字符本身的特殊含义,例如，使用.可以匹配到 .  ,使用\ 可以匹配到 \</p>
-<p>利用上述讲的一些规则拼拼凑凑就可以实现一些常用字符串的验证啦，比如下面的一些：</p>
-<ul>
-<li>验证帐号，数字,字母，下划线组成，以字母开头，长度5到9位：^[a-zA-Z]\w{5,9}$</li>
-<li>验证手机号，以1开头，长度11位（乞丐版验证）：^1\d{10}$</li>
-<li>一个匹配ip地址的正则表达式:^((2[0-4]\d|25[0-5]|[01]?\d\d?).){3}(2[0-4]\d|25[0-5]|[01]?\d\d?$)</li>
-<li>一个匹配邮箱的正则表达式：^[0-9a-zA-Z](\w|.|-)*@[0-9a-zA-Z]+.(com|cn|net|me|pro｜edu|gov)$</li>
-</ul>
-<p>暂时先写这么多吧。话说来滴滴实习之后一直忙于业务上的事，这个博客已经停更很久了。以后还是会坚持写。</p>
-
+        
       
 
       
@@ -195,21 +167,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -260,7 +217,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/12/正则入门/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/10/JavaScript设计模式小记/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,18 +231,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/22/Web-IDE之Terminal组件开发/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Web IDE之Terminal组件开发
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/03/07/块级格式化上下文(BFC)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">块级格式化上下文(BFC)</div>
+    <a href="/2017/06/10/前后端接口规范简要记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">前后端接口规范简要记录</div>
       <i class="icon-circle-right"></i>
     </a>
   
