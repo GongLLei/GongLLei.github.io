@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/16/JavaScript设计模式小记之发布－－订阅者模式/index.html">
 <meta property="og:site_name" content="GongLei'blog">
 <meta property="og:description" content="发布/订阅者模式是JavaScript开发当中常用的设计模式，大量的库或者框架的开发中都应用到了这种设计模式。今天我们就理解一下这种设计模式的应用场景及优势，并实现一个简易的发布/订阅者模式。">
-<meta property="og:updated_time" content="2017-07-17T06:58:56.000Z">
+<meta property="og:updated_time" content="2017-07-17T07:18:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript设计模式小记之发布/订阅者模式">
 <meta name="twitter:description" content="发布/订阅者模式是JavaScript开发当中常用的设计模式，大量的库或者框架的开发中都应用到了这种设计模式。今天我们就理解一下这种设计模式的应用场景及优势，并实现一个简易的发布/订阅者模式。">
@@ -159,7 +159,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>发布/订阅者模式是JavaScript开发当中常用的设计模式，大量的库或者框架的开发中都应用到了这种设计模式。今天我们就理解一下这种设计模式的应用场景及优势，并实现一个简易的发布/订阅者模式。<br><a id="more"></a><br>    顾名思义，发布订阅者模式当中存在两种角色，即发布者和订阅者。订阅者是指的是当请求在某些事件(event)到达时通知它并执行相应的动作(action)，而发布者则是相对于订阅者来的，它会告知订阅者事件(event)已经到达，可以执行相应的动作。通过刚才的表述，不难发现，订阅者订阅事件实际上是在发布者对象的数组中写入要订阅的事件，即注册事件；而发布者发布的时候实际上是在依次执行订阅者订阅的对应类型的方法。<br>   说到这里熟悉angular的人可能能够想到，其$broadcast／$on服务本质上就是一个发布订阅者模式。当内部数据或者对象发上变化或者完成某个操作时(如异步请求数据获得结果后)，我们通过$broadcast一个消息来发送给对应的接受者，而接收者通过$on收到对应消息之后就会执行里面的对应逻辑,这样就轻松的实现了代码之间的解耦，不同的模块之间只是相互通知而已，就不需要继续写在一起了。<br>   说了那么多，下面我们自己实现一个简易的发布／订阅者模式。通过刚才的分析，首先应该有一个容器来保存不同消息类型下面注册的各种方法，，还需要有发布者发布消息的方法，订阅者注册对应消息类型下面方法的方法，此外，当订阅者不需要继续订阅某个消息类型下方法时，应该提供一个取消订阅的方法。</p>
+        <p>发布/订阅者模式是JavaScript开发当中常用的设计模式，大量的库或者框架的开发中都应用到了这种设计模式。今天我们就理解一下这种设计模式的应用场景及优势，并实现一个简易的发布/订阅者模式。<br><a id="more"></a><br>    顾名思义，发布订阅者模式当中存在两种角色，即发布者和订阅者。订阅者是指的是当请求在某些事件(event)到达时通知它并执行相应的动作(action)，而发布者则是相对于订阅者来的，它会告知订阅者事件(event)已经到达，可以执行相应的动作。通过刚才的表述，不难发现，订阅者订阅事件实际上是在发布者对象的数组中写入要订阅的事件，即注册事件；而发布者发布的时候实际上是在依次执行订阅者订阅的对应类型的方法。<br>   说到这里熟悉angular的人可能能够想到，其$broadcast／$on服务本质上就是一个发布订阅者模式。当内部数据或者对象发上变化或者完成某个操作时(如异步请求数据获得结果后)，我们通过$broadcast一个消息来发送给对应的接受者，而接收者通过$on收到对应消息之后就会执行里面的对应逻辑,<strong>这样就轻松的实现了代码之间的解耦，不同的模块之间只是相互通知而已，就不需要继续写在一起了,这也是发布订阅者模式最大的作用了</strong>。<br>   说了那么多，下面我们自己实现一个简易的发布／订阅者模式。通过刚才的分析，首先应该有一个容器来保存不同消息类型下面注册的各种方法，，还需要有发布者发布消息的方法，订阅者注册对应消息类型下面方法的方法，此外，当订阅者不需要继续订阅某个消息类型下方法时，应该提供一个取消订阅的方法。具体的实现代码如下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> PubSub = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="comment">//存放所有类型下方法的对象</span></div><div class="line">         <span class="keyword">var</span> _message = &#123;&#125;;</div><div class="line">         <span class="keyword">return</span> &#123;</div><div class="line">             <span class="comment">//发布</span></div><div class="line">             publish: <span class="function"><span class="keyword">function</span> (<span class="params">type, args</span>) </span>&#123;</div><div class="line">                 <span class="keyword">if</span> (!_message[type]) &#123;</div><div class="line">                     <span class="keyword">return</span>;</div><div class="line">                 &#125;;</div><div class="line">                 <span class="keyword">var</span> e = &#123;</div><div class="line">                     <span class="attr">type</span>:type,</div><div class="line">                     <span class="attr">args</span>:args</div><div class="line">                 &#125;</div><div class="line">                 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _message[type].length; i++) &#123;</div><div class="line">                     _message[type][i](e);</div><div class="line">                 &#125;</div><div class="line">             &#125;,</div><div class="line">             <span class="comment">//订阅(即注册方法)</span></div><div class="line">             subscribe: <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</div><div class="line">                 <span class="keyword">if</span> (!_message[type]) &#123;</div><div class="line">                     _message[type] = [fn];</div><div class="line">                 &#125; <span class="keyword">else</span> &#123;</div><div class="line">                     _message[type].push(fn);</div><div class="line">                 &#125;</div><div class="line">             &#125;,</div><div class="line">             <span class="comment">//取消订阅</span></div><div class="line">             unsubscribe: <span class="function"><span class="keyword">function</span> (<span class="params">type, fn</span>) </span>&#123;</div><div class="line">                 <span class="keyword">if</span> (!_message[type]) &#123;</div><div class="line">                     <span class="keyword">return</span>;</div><div class="line">                 &#125;</div><div class="line">                 <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; _message[type].length; i++) &#123;</div><div class="line">                     <span class="keyword">if</span> (_message[type][i] === fn) &#123;</div><div class="line">                         _message[type].splice(i, <span class="number">1</span>);</div><div class="line">                     &#125;</div><div class="line">                 &#125;</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">     &#125;)();</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//对上述代码进行测试</span></div><div class="line">PubSub.subscribe(<span class="string">'test'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">       <span class="built_in">console</span>.log(e.type,e.args);</div><div class="line">   &#125;);</div><div class="line">   PubSub.publish(<span class="string">'test'</span>,&#123;</div><div class="line">       <span class="attr">arg1</span>:<span class="string">'1'</span>,</div><div class="line">       <span class="attr">arg2</span>:<span class="number">2</span></div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
+<p>在测试代码当中我们订阅了test事件，当test被push时，执行后面的方法。随后在下面我们publish被订阅的test事件，并传入方法之行的参数。测试结果发现订阅的方法能够正确执行。</p>
 
       
 
@@ -334,6 +336,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Web IDE</a>
               </li>
              
@@ -350,10 +356,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">－设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
@@ -362,7 +364,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程规范</a>
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -370,7 +372,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+                <a href="javascript:void(0)" class="js-tag color1">－设计模式</a>
               </li>
             
             <div class="clearfix"></div>
