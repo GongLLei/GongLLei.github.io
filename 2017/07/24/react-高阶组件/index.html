@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/24/react-高阶组件/index.html">
 <meta property="og:site_name" content="GongLei'blog">
 <meta property="og:description" content="高阶组件(higher-order component，HOC)是React中复用组件逻辑的一种进阶技巧，是对React代码进行更高层次重构的好方法。它本身并不是React自带的api，可以说是一种React当中的组件设计理念。具体来说，高阶组件就是一个React包裹着另外一个React组件，从实现上来说，它一般指的是以一个组件为参数，并且返回新组件的方法。">
-<meta property="og:updated_time" content="2017-07-26T04:26:18.000Z">
+<meta property="og:updated_time" content="2017-07-26T04:51:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react 高阶组件">
 <meta name="twitter:description" content="高阶组件(higher-order component，HOC)是React中复用组件逻辑的一种进阶技巧，是对React代码进行更高层次重构的好方法。它本身并不是React自带的api，可以说是一种React当中的组件设计理念。具体来说，高阶组件就是一个React包裹着另外一个React组件，从实现上来说，它一般指的是以一个组件为参数，并且返回新组件的方法。">
@@ -159,8 +159,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>高阶组件(higher-order component，HOC)是React中复用组件逻辑的一种进阶技巧，是对React代码进行更高层次重构的好方法。它本身并不是React自带的api，可以说是一种React当中的组件设计理念。具体来说，高阶组件就是一个React包裹着另外一个React组件，从实现上来说，它一般指的是以一个组件为参数，并且返回新组件的方法。</p>
-
+        <p>高阶组件(higher-order component，HOC)是React中复用组件逻辑的一种进阶技巧，是对React代码进行更高层次重构的好方法。它本身并不是React自带的api，可以说是一种React当中的组件设计理念。具体来说，高阶组件就是一个React包裹着另外一个React组件，从实现上来说，它一般指的是以一个组件为参数，并且返回新组件的方法。<br><a id="more"></a><br>我们首先给出一个最简单的高阶组件的实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> HighOrderComponent = <span class="function">(<span class="params">WrappedComponent</span>) =&gt;</span> &#123;</div><div class="line">   <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">HOC</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</div><div class="line">        render()&#123;</div><div class="line">            <span class="keyword">return</span> &lt;WrappedComponent &#123;...this.props&#125;/&gt;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>不难发现，上述方法中我们传入了一个WrappedComponent（即被包裹的组件），然后在方法中新的组件，在这个组件的render 方法中我们返回了一个被包裹组件的React Element。这个实现其实很容易理解，跟我们平时自定义react组件的方法比较类似。我们可以这样来使用这个高阶组件：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> EnhancedCopmonent  = HighOrderComponent(WrappedComponent);</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> EnhancedComponent;</div></pre></td></tr></table></figure></p>
+<p>这样我们就构造出了一个新的组件EnhanceComponent，它可以像普通的组件一样来进行使用。<br>那么问题来了，高阶组件到底有什么用处呢？一般来讲 高阶组件有一下几个作用：<br>1.操作props<br>2.处理跨组件的需求<br>3.用其他的元素包裹 WrappedComponent组件<br>下面我们一个一个来讲：</p>
+<h3 id="操作props"><a href="#操作props" class="headerlink" title="操作props"></a>操作props</h3><h3 id="处理跨组件的需求"><a href="#处理跨组件的需求" class="headerlink" title="处理跨组件的需求"></a>处理跨组件的需求</h3><h3 id="用其他元素包裹WrappedComponent组件"><a href="#用其他元素包裹WrappedComponent组件" class="headerlink" title="用其他元素包裹WrappedComponent组件"></a>用其他元素包裹WrappedComponent组件</h3>
       
 
       
