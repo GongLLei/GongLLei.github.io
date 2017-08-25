@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>webpack打包性能优化 | GongLei&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时">
+  <meta name="description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack打包性能优化">
 <meta property="og:url" content="http://yoursite.com/2017/02/27/webpack打包性能优化/index.html">
 <meta property="og:site_name" content="GongLei'blog">
-<meta property="og:description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时">
-<meta property="og:updated_time" content="2017-02-27T06:41:36.000Z">
+<meta property="og:description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都">
+<meta property="og:updated_time" content="2017-07-27T05:03:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack打包性能优化">
-<meta name="twitter:description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时">
+<meta name="twitter:description" content="最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都">
   
     <link rel="alternative" href="/atom.xml" title="GongLei&#39;blog" type="application/atom+xml">
   
@@ -159,7 +159,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，在使用热更新的情况下，甚至我们改动了一行代码都要重新编译一遍，等待时间可达到几十秒，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都在首屏时加载，会拖慢我们应用的首屏时间，导致用户体验变差。显然这种方式是十分粗暴的，因此需要进行合理的优化，以下是我近两天采用的一些方法。<br> <a id="more"></a></p>
+        <p> 最近尝试使用webpack来做前端资源模块化管理以及打包，感觉开发体验提升了不少，webpack将任何资源都视作模块，默认情况下统统打包进一个文件（bundle.js），这种all in JS 的方式我非常喜欢。但是同时也带来了一些问题，随着静态资源以及模块的增多，bundle.js会变的臃肿不堪，这就导致编译时间会大幅度上升，这对我们的开发体验是非常不利的。同时，对于单页应用来说，所有的资源都在首屏时加载，会拖慢我们应用的首屏时间，导致用户体验变差。显然这种方式是十分粗暴的，因此需要进行合理的优化，以下是我近两天采用的一些方法。<br> <a id="more"></a></p>
 <h3 id="1-抽离公共代码块"><a href="#1-抽离公共代码块" class="headerlink" title="1.抽离公共代码块"></a>1.抽离公共代码块</h3><p> 对于常用的类库或者common代码块来说，基本上我们不会修改到，因此我们可以把这一部分代码抽离出来，单独打包成一个文件，在入口的html文件当中单独引入。webpack中提供了内置的插件帮我们实现这个功能，例如我们想要将jquery单独打包，可以采用下面这种做法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">entry:&#123;</div><div class="line">      <span class="attr">path</span>:__dirname+<span class="string">"/src/entry.js"</span>,</div><div class="line">      <span class="attr">vendor</span>:[<span class="string">"jquery"</span>]</div><div class="line">  	&#125;</div><div class="line">   plugins:[</div><div class="line">  	<span class="keyword">new</span>  webpack.optimize.CommonsChunkPlugin(&#123;<span class="attr">name</span>:<span class="string">"vendor"</span>,<span class="attr">filename</span>:<span class="string">"vendor.js"</span>&#125;) </div><div class="line">  ]</div></pre></td></tr></table></figure></p>
 <p> 以上就将jquery单独打包为vendor.js，随后在入口的html文件中引入即可，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt; script type=<span class="string">"text/javascript"</span> src=<span class="string">"vendor.js?24f0580a0c65db9f9ddd"</span>&gt;&lt;/script&gt;</div><div class="line">&lt; script type=<span class="string">"text/javascript"</span> src=<span class="string">"bundle.js?24f0580a0c65db9f9ddd"</span>&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 <p>通过以上方式可以有效的提升开发时的体验，抽离出的公共部分不参与打包（热更新的情况下），减少了开发时编译的等待时间。</p>
@@ -182,11 +182,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
@@ -352,19 +352,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">－设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Web IDE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -376,31 +372,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">-设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程规范</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">－ react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">－react</a>
+                <a href="javascript:void(0)" class="js-tag color1">--polyfill</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -408,7 +380,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程规范</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">polyfill</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-polyfill</a>
               </li>
             
             <div class="clearfix"></div>
